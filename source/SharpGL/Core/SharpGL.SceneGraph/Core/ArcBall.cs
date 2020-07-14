@@ -102,7 +102,8 @@ namespace SharpGL.SceneGraph.Core
             if (cross.Magnitude() > 1.0e-5)
             {
                 //  The quaternion is the transform.
-                return new float[] { cross.X, cross.Y, cross.Z, startVector.ScalarProduct(currentVector) };
+                return new float[] { -cross.X, -cross.Y, -cross.Z, startVector.ScalarProduct(currentVector) };
+                //return new float[] { cross.X, cross.Y, cross.Z, startVector.ScalarProduct(currentVector) };
             }
             else
             {
