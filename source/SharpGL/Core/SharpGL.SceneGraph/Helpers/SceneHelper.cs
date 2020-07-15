@@ -30,7 +30,7 @@ namespace SharpGL.SceneGraph.Helpers
             //  Create the 'Look At' camera
             var lookAtCamera = new LookAtCamera()
             {
-                Position = new Vertex(-10f, -10f, 10f),
+                Position = new Vertex(0f, -10f, 15f),
                 Target = new Vertex(0f, 0f, 0f),
                 UpVector = new Vertex(0f, 0f, 1f)
             };
@@ -40,9 +40,9 @@ namespace SharpGL.SceneGraph.Helpers
 
             //  Add some design-time primitives.
             var folder = new Folder() { Name = "Design Primitives" };
-            folder.AddChild(new Grid());
-            folder.AddChild(new Axies());
-            scene.SceneContainer.AddChild(folder);
+            //folder.AddChild(new Grid());
+            //folder.AddChild(new Axies());
+            //scene.SceneContainer.AddChild(folder);
 
             //  Create some lights.
             Light light1 = new Light()
