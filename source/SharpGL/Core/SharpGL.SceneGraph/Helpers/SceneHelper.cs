@@ -30,8 +30,8 @@ namespace SharpGL.SceneGraph.Helpers
             //  Create the 'Look At' camera
             var lookAtCamera = new LookAtCamera()
             {
-                Position = new Vertex(0f, -10f, 15f),
-                Target = new Vertex(0f, 0f, 0f),
+                Position = new Vertex(7.5f, -10f, 7.5f),
+                Target = new Vertex(7.5f, 0f, 0f),
                 UpVector = new Vertex(0f, 0f, 1f)
             };
 

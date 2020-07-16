@@ -61,13 +61,13 @@ namespace SharpGL.SceneGraph.Primitives
 
             //  Draw the grid lines.
             gl.Begin(OpenGL.GL_LINES);
-            for (int i = -20; i <= 20; i++)
+            for (int i = -5; i <= 20; i++)
             {
-                float fcol = ((i % 20) == 0) ? 0.3f : 0.15f;
+                float fcol = ((i % 5) == 0) ? 0.3f : 0.15f;
                 gl.Color(fcol, fcol, fcol);
-                gl.Vertex(i, -20, 0);
+                gl.Vertex(i, -5, 0);
                 gl.Vertex(i, 20, 0);
-                gl.Vertex(-20, i, 0);
+                gl.Vertex(-5, i, 0);
                 gl.Vertex(20, i, 0);
             }
             gl.End();
