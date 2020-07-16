@@ -28,7 +28,9 @@ namespace SharpGL.SceneGraph.Core
         /// </summary>
         public void TransformMatrix(OpenGL gl)
         {
+            gl.Translate(7.5F, 7.5F, 0.0F);
             gl.MultMatrix(transformMatrix.AsColumnMajorArray);
+            gl.Translate(-7.5F, -7.5F, 0.0F);
         }
 
         public void MouseDown(int x, int y)
