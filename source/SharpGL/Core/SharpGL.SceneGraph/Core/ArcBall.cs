@@ -16,6 +16,11 @@ namespace SharpGL.SceneGraph.Core
         /// </summary>
         public ArcBall()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
             //  Set the identity matrices.
             transformMatrix.SetIdentity();
             lastRotationMatrix.SetIdentity();
