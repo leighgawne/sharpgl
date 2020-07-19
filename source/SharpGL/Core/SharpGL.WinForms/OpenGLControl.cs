@@ -13,6 +13,8 @@ namespace SharpGL
     [ToolboxBitmap(typeof(OpenGLControl), "SharpGL.png")]
     public partial class OpenGLControl : UserControl, ISupportInitialize
     {
+        public Func<string> TextContent { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenGLControl"/> class.
         /// </summary>
@@ -116,8 +118,12 @@ namespace SharpGL
             //	If there is a draw handler, then call it.
             DoOpenGLDraw(new RenderEventArgs(graphics));
 
-            //  Draw the FPS.
-            if (DrawFPS)
+            if (TextContent != null)
+            {
+                OpenGL.DrawText(5, 5, 1.0f, 0.0f, 0.0f, "Courier New", 12.0f, TextContent());
+                OpenGL.Flush();
+            }
+            else if (DrawFPS)
             {
                 OpenGL.DrawText(5, 5, 1.0f, 0.0f, 0.0f, "Courier New", 12.0f,
                     string.Format("Draw Time: {0:0.0000} ms ~ {1:0.0} FPS", frameTime, 1000.0 / frameTime));
