@@ -30,7 +30,8 @@ namespace DuckySample
 
             // Let's load ducky
             var obj = new ObjFileFormat();
-            var objScene = obj.LoadData(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "ducky.obj"));
+            //var objScene = obj.LoadData(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "ducky.obj"));
+            var objScene = obj.LoadData(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "JUKI505.obj"));
 
             // Add the materials to the scene
             foreach (var asset in objScene.Assets)

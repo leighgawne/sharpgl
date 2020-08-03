@@ -15,11 +15,16 @@ namespace SharpGL.Serialization.Wavefront
     {
         public Scene LoadData(string path)
         {
+            return LoadData<Polygon>(path);
+        }
+            
+        public Scene LoadData<T>(string path) where T : Polygon
+        {
             char[] split = new char[] { ' ' };
 
             //  Create a scene and polygon.
             Scene scene = new Scene();
-            Polygon polygon = new Polygon();
+            T polygon = Activator.CreateInstance<T>();
 
             string mtlName = null;
 

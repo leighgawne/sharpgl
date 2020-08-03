@@ -115,6 +115,8 @@ namespace SharpGL.SceneGraph.Primitives
         /// <param name="renderMode">The render mode.</param>
         public virtual void Render(OpenGL gl, RenderMode renderMode)
         {
+            gl.Color(1.0F, 1.0F, 1.0F);
+
             //  If we're frozen, use the helper.
             if (freezableHelper.IsFrozen)
             {
