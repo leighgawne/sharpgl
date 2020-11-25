@@ -20,7 +20,7 @@ namespace SharpGL.SceneGraph
         /// </summary>
 		public Scene()
         {
-            RenderBoundingVolumes = true;
+            RenderBoundingVolumes = false;
 
             //  The SceneContainer must have it's parent scene set.
             SceneContainer.ParentScene = this;

@@ -9,7 +9,7 @@ namespace SharpGL.SceneGraph.Helpers
     /// <summary>
     /// The bounding helper.
     /// </summary>
-    internal class BoundingVolumeHelper
+    public class BoundingVolumeHelper
     {
         /// <summary>
         /// The bounding volume.
