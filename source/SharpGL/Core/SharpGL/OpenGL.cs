@@ -7119,7 +7119,7 @@ if (insideGLBegin == false)
         public void DrawText(int x, int y, float r, float g, float b, 
             string faceName, float fontSize, string text)
         {
-            DrawText(x, y, r, g, b, faceName, fontSize, text,
+            DrawText(x, renderContextProvider.Height - y - 10, r, g, b, faceName, fontSize, text,
                 renderContextProvider.Width, renderContextProvider.Height);
         }
 

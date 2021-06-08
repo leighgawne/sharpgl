@@ -110,42 +110,47 @@ namespace SharpGL.SceneGraph
 			return resultSet;
 		}
 
+        public object DrawLock = new object();
+
 		/// <summary>
 		/// This function draws all of the objects in the scene (i.e. every quadric
 		/// in the quadrics arraylist etc).
 		/// </summary>
 		public virtual void Draw(Camera camera = null)
 		{
-            //  TODO: we must decide what to do about drawing - are 
-            //  cameras completely outside of the responsibility of the scene?
-            //  If no camera has been provided, use the current one.
-            if (camera == null)
-                camera = CurrentCamera;
+            lock (DrawLock)
+            {
+                //  TODO: we must decide what to do about drawing - are 
+                //  cameras completely outside of the responsibility of the scene?
+                //  If no camera has been provided, use the current one.
+                if (camera == null)
+                    camera = CurrentCamera;
 
-			//	Set the clear color.
-			float[] clear = _clearColour;
-			gl.ClearColor(clear[0], clear[1], clear[2], clear[3]);
+                //	Set the clear color.
+                float[] clear = _clearColour;
+                gl.ClearColor(clear[0], clear[1], clear[2], clear[3]);
 
-            //  Reproject.
-            if (camera != null)
-                camera.Project(gl);
+                //  Reproject.
+                if (camera != null)
+                    camera.Project(gl);
 
-			//	Clear.
-            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT |
-                OpenGL.GL_STENCIL_BUFFER_BIT);
+                //	Clear.
+                gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT |
+                    OpenGL.GL_STENCIL_BUFFER_BIT);
 
-            //gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
+                //gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
 
-            //  Render the root element, this will then render the whole
-            //  of the scene tree.
-            RenderElement(SceneContainer, RenderMode.Design);
+                //  Render the root element, this will then render the whole
+                //  of the scene tree.
+                RenderElement(SceneContainer, RenderMode.Design);
 
-            //  TODO: Adding this code here re-enables textures- it should work without it but it
-            //  doesn't, look into this.
-            //gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
-            //gl.Enable(OpenGL.GL_TEXTURE_2D);
-                        
-			gl.Flush();
+                //  TODO: Adding this code here re-enables textures- it should work without it but it
+                //  doesn't, look into this.
+                //gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
+                //gl.Enable(OpenGL.GL_TEXTURE_2D);
+
+                gl.Flush();
+            }
 		}
 
 	    /// <summary>

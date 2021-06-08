@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using SharpGL.SceneGraph;
 
@@ -77,7 +79,15 @@ namespace SharpGL
 			//  Draw the FPS.
 			if (TextContent != null)
 			{
-				OpenGL.DrawText(5, 5, 1.0f, 0.0f, 0.0f, "Courier New", 12.0f, TextContent());
+				List<string> allLines = TextContent().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+				int y = 10;
+				foreach (var line in allLines)
+                {
+					OpenGL.DrawText(5, y, 0.0f, 1.0f, 0.0f, "Courier New", 18.0f, line);
+					y += 32;
+				}
+
 				OpenGL.Flush();
 			}
 			else if (DrawFPS)
